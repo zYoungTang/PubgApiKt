@@ -1,13 +1,10 @@
 package com.zyoung.pubgkt.api
 
-import android.util.Log
-import com.google.gson.Gson
 import com.zyoung.mypubg.api.MatchesApi
+import com.zyoung.pubgkt.api.api.SeasonsApi
 import com.zyoung.pubgkt.api.bean.MatchInfo
 import com.zyoung.pubgkt.api.bean.PlayerInfo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.zyoung.pubgkt.api.bean.SeasonsInfo
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -35,15 +32,10 @@ class Pubg {
         }
     }
 
-    fun player(region: String, playerName: String): Player? {
-        return player(region, playerName, null)
-    }
-
-    fun player(region: String, playerName: String, id: String?): Player? {
-        var mGson: Gson = Gson()
+    fun player(region: String, playerName: String, createTime: String?, id: String?): Player? {
         val retrofit: Retrofit = getRetrofit()
         val api: PlayerInfoApi = retrofit.create<PlayerInfoApi>(PlayerInfoApi::class.java)
-        val call = api.getPlayerInfoByName(region, playerName, id, APP_KEY)
+        val call = api.getPlayerInfoByName(region, playerName, id, createTime, APP_KEY)
         val response = call.execute()
         if (response.isSuccessful) {
             val bean: PlayerInfo = response.body()!!
@@ -52,7 +44,6 @@ class Pubg {
     }
 
     fun getMatch(region: String, id: String): MatchInfo? {
-        var mGson: Gson = Gson()
         val retrofit: Retrofit = getRetrofit()
         val api: MatchesApi = retrofit.create<MatchesApi>(MatchesApi::class.java)
         val call = api.getMatchInfo(region, id, APP_KEY)
@@ -66,7 +57,6 @@ class Pubg {
     fun getMatch(region: String, matches: List<PlayerInfo.DataBeanX.RelationshipsBean.MatchesBean.DataBean>): List<MatchInfo?> {
         var list = ArrayList<MatchInfo?>()
         matches.forEach { it ->
-            var mGson: Gson = Gson()
             val retrofit: Retrofit = getRetrofit()
             val api: MatchesApi = retrofit.create<MatchesApi>(MatchesApi::class.java)
             val call = api.getMatchInfo(region, it.id, APP_KEY)
@@ -76,5 +66,16 @@ class Pubg {
             }
         }
         return list
+    }
+
+    fun seasons(region: String): Seasons? {
+        val retrofit = getRetrofit()
+        val api = retrofit.create(SeasonsApi::class.java)
+        val call = api.getSeasons(region, APP_KEY)
+        val response = call.execute()
+        if (response.isSuccessful) {
+            return Seasons(response?.body())
+        }
+        return null
     }
 }

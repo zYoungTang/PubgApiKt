@@ -18,14 +18,7 @@ interface PlayerInfoApi {
             @Path("region") region: String,
             @Query("filter[playerNames]") name: String?,
             @Query("filter[playerIds]") id: String?,
-            @Header("Authorization") key: String
-    ): Call<PlayerInfo>
-
-    @Headers("Accept: application/vnd.api+json")
-    @GET("shards/{region}/players")
-    fun getPlayerInfoByCreateTime(
-            @Path("region") region: String,
-            @Query("filter[createdAt-start]") create_time: String,
+            @Query("filter[createdAt-start]") create_time: String?,
             @Header("Authorization") key: String
     ): Call<PlayerInfo>
 }
