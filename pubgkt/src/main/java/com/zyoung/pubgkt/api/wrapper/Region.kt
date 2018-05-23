@@ -1,4 +1,4 @@
-package com.zyoung.pubgkt.api
+package com.zyoung.pubgkt.api.wrapper
 
 /**
  * Description :

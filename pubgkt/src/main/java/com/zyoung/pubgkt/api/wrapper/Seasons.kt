@@ -1,4 +1,4 @@
-package com.zyoung.pubgkt.api
+package com.zyoung.pubgkt.api.wrapper
 
 import com.zyoung.pubgkt.api.bean.SeasonsInfo
 
@@ -16,6 +16,9 @@ class Seasons {
         bean = seasonsInfo
     }
 
+    /**
+     * return current season
+     */
     fun getCurrentSeason(): SeasonsInfo.DataBean? {
         if (bean != null) {
             for (b in bean!!.data) {
@@ -27,6 +30,9 @@ class Seasons {
         return null
     }
 
+    /**
+     * return the count of seasons
+     */
     fun count(): Int? {
         return bean?.data?.size
     }

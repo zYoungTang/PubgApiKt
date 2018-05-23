@@ -1,10 +1,15 @@
 package com.zyoung.pubgkt.api
 
+import android.util.Log
 import com.zyoung.mypubg.api.MatchesApi
 import com.zyoung.pubgkt.api.api.SeasonsApi
+import com.zyoung.pubgkt.api.api.StatusApi
 import com.zyoung.pubgkt.api.bean.MatchInfo
 import com.zyoung.pubgkt.api.bean.PlayerInfo
-import com.zyoung.pubgkt.api.bean.SeasonsInfo
+import com.zyoung.pubgkt.api.wrapper.Match
+import com.zyoung.pubgkt.api.wrapper.Player
+import com.zyoung.pubgkt.api.wrapper.Seasons
+import com.zyoung.pubgkt.api.wrapper.Status
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -43,15 +48,15 @@ class Pubg {
         } else return null
     }
 
-    fun getMatch(region: String, id: String): MatchInfo? {
+    fun getMatch(region: String, id: String): Match {
         val retrofit: Retrofit = getRetrofit()
         val api: MatchesApi = retrofit.create<MatchesApi>(MatchesApi::class.java)
         val call = api.getMatchInfo(region, id, APP_KEY)
         val response = call.execute()
         if (response.isSuccessful) {
-            return response.body()
+            return Match(response!!.body()!!)
         }
-        return null
+        return Match(MatchInfo())
     }
 
     fun getMatch(region: String, matches: List<PlayerInfo.DataBeanX.RelationshipsBean.MatchesBean.DataBean>): List<MatchInfo?> {
@@ -63,6 +68,8 @@ class Pubg {
             val response = call.execute()
             if (response.isSuccessful) {
                 list.add(response.body())
+            } else {
+                Log.e(TAG, response.errorBody().toString())
             }
         }
         return list
@@ -77,5 +84,15 @@ class Pubg {
             return Seasons(response?.body())
         }
         return null
+    }
+
+    fun status(): Status? {
+        val retrofit = getRetrofit()
+        val api = retrofit.create(StatusApi::class.java)
+        val call = api.getStatus()
+        val response = call.execute()
+        if (response.isSuccessful) {
+            return Status(response!!.body()!!)
+        } else return null
     }
 }

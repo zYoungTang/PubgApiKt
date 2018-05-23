@@ -290,6 +290,130 @@ public class MatchInfo {
         private AttributesBeanX attributes;
         private RelationshipsBeanX relationships;
 
+        public int DBNOs() {
+            return attributes.stats.DBNOs;
+        }
+
+        public int assists() {
+            return attributes.stats.assists;
+        }
+
+        public int boosts() {
+            return attributes.stats.boosts;
+        }
+
+        public double damageDealt() {
+            return attributes.stats.damageDealt;
+        }
+
+        public String deathType() {
+            return attributes.stats.deathType;
+        }
+
+        public int headshotKills() {
+            return attributes.stats.headshotKills;
+        }
+
+        public int heals() {
+            return attributes.stats.heals;
+        }
+
+        public int killPlace() {
+            return attributes.stats.killPlace;
+        }
+
+        public int killPoints() {
+            return attributes.stats.killPoints;
+        }
+
+        public double killPointsDelta() {
+            return attributes.stats.killPointsDelta;
+        }
+
+        public int killStreaks() {
+            return attributes.stats.killStreaks;
+        }
+
+        public int kills() {
+            return attributes.stats.kills;
+        }
+
+        public int lastKillPoints() {
+            return attributes.stats.lastKillPoints;
+        }
+
+        public int lastWinPoints() {
+            return attributes.stats.lastWinPoints;
+        }
+
+        public int longestKill() {
+            return attributes.stats.longestKill;
+        }
+
+        public int mostDamage() {
+            return attributes.stats.mostDamage;
+        }
+
+        public String name() {
+            return attributes.stats.name;
+        }
+
+        public String playerId() {
+            return attributes.stats.playerId;
+        }
+
+        public int revives() {
+            return attributes.stats.revives;
+        }
+
+        public double rideDistance() {
+            return attributes.stats.rideDistance;
+        }
+
+        public int roadKills() {
+            return attributes.stats.roadKills;
+        }
+
+        public int teamKills() {
+            return attributes.stats.teamKills;
+        }
+
+        public int timeSurvived() {
+            return attributes.stats.timeSurvived;
+        }
+
+        public int vehicleDestroys() {
+            return attributes.stats.vehicleDestroys;
+        }
+
+        public double walkDistance() {
+            return attributes.stats.walkDistance;
+        }
+
+        public int weaponsAcquired() {
+            return attributes.stats.weaponsAcquired;
+        }
+
+        public int winPlace() {
+            return attributes.stats.winPlace;
+        }
+
+        public int winPoints() {
+            return attributes.stats.winPoints;
+        }
+
+        public double winPointsDelta() {
+            return attributes.stats.winPointsDelta;
+        }
+
+        public String shardId() {
+            return attributes.shardId;
+        }
+
+        public String actor() {
+            return attributes.actor;
+        }
+
         public String getType() {
             return type;
         }
