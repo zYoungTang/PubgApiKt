@@ -96,3 +96,9 @@ l
 <pubgkt/src/main/java/com/zyoung/pubgkt/api/wrapper/Player.kt,8/0/80154ed0fab9ffa62a7d9800ebbbab04e56143c0
 k
 ;pubgkt/src/main/java/com/zyoung/pubgkt/api/wrapper/Match.kt,4/a/4a1ec6706c1cd5dc0e1c2ff119e38b029cc41ace
+l
+<pubgkt/src/main/java/com/zyoung/pubgkt/api/wrapper/Region.kt,b/b/bbf835ebfac202d5729bdfdbb7d9d9435ac16eb9
+m
+=pubgkt/src/main/java/com/zyoung/pubgkt/api/wrapper/Seasons.kt,f/d/fd48bca593af7e2c7d8a4cd54712848c13649f93
+l
+<pubgkt/src/main/java/com/zyoung/pubgkt/api/wrapper/Status.kt,7/c/7c1fad0563c51f77a56fabead966e3cb383d089e

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MyPUBG</string>
+
+    <string-array name="regions">
+        <item>pc-as</item>
+        <item>pc-na</item>
+        <item>pc-sea</item>
+        <item>pc-sa</item>
+        <item>pc-kakao</item>
+        <item>pc-krjp</item>
+        <item>pc-jp</item>
+        <item>pc-eu</item>
+        <item>pc-oc</item>
+        <item>xbox-as</item>
+        <item>xbox-eu</item>
+        <item>xbox-na</item>
+        <item>xbox-oc</item>
+    </string-array>
 </resources>

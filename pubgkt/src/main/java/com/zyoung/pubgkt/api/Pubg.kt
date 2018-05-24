@@ -6,10 +6,8 @@ import com.zyoung.pubgkt.api.api.SeasonsApi
 import com.zyoung.pubgkt.api.api.StatusApi
 import com.zyoung.pubgkt.api.bean.MatchInfo
 import com.zyoung.pubgkt.api.bean.PlayerInfo
-import com.zyoung.pubgkt.api.wrapper.Match
-import com.zyoung.pubgkt.api.wrapper.Player
-import com.zyoung.pubgkt.api.wrapper.Seasons
-import com.zyoung.pubgkt.api.wrapper.Status
+import com.zyoung.pubgkt.api.bean.PlayerSeasonInfo
+import com.zyoung.pubgkt.api.wrapper.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -37,15 +35,31 @@ class Pubg {
         }
     }
 
+
+    fun player(region: String, playerName: String): Player? {
+        return player(region, playerName, null, null)
+    }
+
     fun player(region: String, playerName: String, createTime: String?, id: String?): Player? {
         val retrofit: Retrofit = getRetrofit()
         val api: PlayerInfoApi = retrofit.create<PlayerInfoApi>(PlayerInfoApi::class.java)
-        val call = api.getPlayerInfoByName(region, playerName, id, createTime, APP_KEY)
+        val call = api.getPlayerInfo(region, playerName, id, createTime, APP_KEY)
         val response = call.execute()
-        if (response.isSuccessful) {
+        return if (response.isSuccessful) {
             val bean: PlayerInfo = response.body()!!
-            return Player(bean)
-        } else return null
+            Player(bean)
+        } else null
+    }
+
+    fun playerSeason(region: String, player_id: String, season_id: String): PlayerSeason? {
+        val retrofit: Retrofit = getRetrofit()
+        val api: PlayerInfoApi = retrofit.create<PlayerInfoApi>(PlayerInfoApi::class.java)
+        val call = api.getPlayerSeasonInfo(region, player_id, season_id, APP_KEY)
+        val response = call.execute()
+        return if (response.isSuccessful) {
+            val bean: PlayerSeasonInfo = response.body()!!
+            PlayerSeason(bean)
+        } else null
     }
 
     fun getMatch(region: String, id: String): Match {
@@ -80,8 +94,8 @@ class Pubg {
         val api = retrofit.create(SeasonsApi::class.java)
         val call = api.getSeasons(region, APP_KEY)
         val response = call.execute()
-        if (response.isSuccessful) {
-            return Seasons(response?.body())
+        if (response.isSuccessful && response!!.body() != null) {
+            return Seasons(response.body()!!)
         }
         return null
     }
@@ -91,8 +105,8 @@ class Pubg {
         val api = retrofit.create(StatusApi::class.java)
         val call = api.getStatus()
         val response = call.execute()
-        if (response.isSuccessful) {
-            return Status(response!!.body()!!)
-        } else return null
+        return if (response.isSuccessful) {
+            Status(response!!.body()!!)
+        } else null
     }
 }

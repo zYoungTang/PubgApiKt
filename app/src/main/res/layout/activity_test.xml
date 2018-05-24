@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <Button
+        android:id="@+id/btn_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player" />
+
+    <Button
+        android:id="@+id/btn_playerseason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player-Season" />
+
+    <Button
+        android:id="@+id/btn_matches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Match" />
+
+    <Button
+        android:id="@+id/btn_seasons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seasons" />
+
+    <Button
+        android:id="@+id/btn_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status" />
+
+    <Button
+        android:id="@+id/btn_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test" />
+</LinearLayout>

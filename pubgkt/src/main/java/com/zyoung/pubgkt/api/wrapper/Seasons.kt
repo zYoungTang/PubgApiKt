@@ -10,21 +10,21 @@ import com.zyoung.pubgkt.api.bean.SeasonsInfo
  * Date :  2018/5/16 18:28
  */
 class Seasons {
-    var bean: SeasonsInfo?
+    var bean: SeasonsInfo
+    var seasons: List<SeasonsInfo.DataBean>
 
-    constructor(seasonsInfo: SeasonsInfo?) {
+    constructor(seasonsInfo: SeasonsInfo) {
         bean = seasonsInfo
+        seasons = bean.data
     }
 
     /**
      * return current season
      */
     fun getCurrentSeason(): SeasonsInfo.DataBean? {
-        if (bean != null) {
-            for (b in bean!!.data) {
-                if (b.attributes.isIsCurrentSeason == true) {
-                    return b
-                }
+        for (season in seasons) {
+            if (season.attributes.isIsCurrentSeason) {
+                return season
             }
         }
         return null
@@ -33,7 +33,7 @@ class Seasons {
     /**
      * return the count of seasons
      */
-    fun count(): Int? {
-        return bean?.data?.size
+    fun count(): Int {
+        return seasons.size
     }
 }

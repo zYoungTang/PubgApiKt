@@ -1,7 +1,11 @@
 package com.zyoung.pubgkt.api.wrapper
 
+import android.annotation.SuppressLint
+import android.os.Parcel
+import android.os.Parcelable
 import com.zyoung.pubgkt.api.bean.PlayerInfo
 
+@SuppressLint("ParcelCreator")
 /**
  * Description :
  *
@@ -9,7 +13,15 @@ import com.zyoung.pubgkt.api.bean.PlayerInfo
  *
  * Date :  2018/5/16 15:14
  */
-class Player {
+class Player : Parcelable {
+    override fun writeToParcel(dest: Parcel?, flags: Int) {
+        dest?.writeInt(flags)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
     var bean: PlayerInfo
     var matches: List<PlayerInfo.DataBeanX.RelationshipsBean.MatchesBean.DataBean>
     var name: String
