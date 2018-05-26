@@ -16,7 +16,6 @@ import com.zyoung.mypubg.fragment.MineFragment
 import com.zyoung.mypubg.fragment.SeasonsStatusFragment
 import com.zyoung.mypubg.fragment.VersionFragment
 import com.zyoung.pubgkt.api.Pubg
-import com.zyoung.pubgkt.api.tools.L
 import com.zyoung.pubgkt.api.wrapper.Player
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -77,6 +76,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 vp_main.setCurrentItem(3, false)
             }
         }
+    }
+
+    fun getPlayer(): Player {
+        return mPlayer
     }
 
     class MyFragmentAdapter : FragmentPagerAdapter {

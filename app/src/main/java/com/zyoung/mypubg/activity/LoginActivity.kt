@@ -5,9 +5,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
+import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.Toast
 import com.google.gson.Gson
 import com.zyoung.mypubg.APP_KEY
 import com.zyoung.mypubg.R
@@ -29,9 +28,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         mContext = this
         mPubg = Pubg(APP_KEY)
         mGson = Gson()
-
         btn_search.setOnClickListener(this)
-        edt_playerName.setText("xTongBB")
+        edt_playerName.setText("YKZHENG")
         spinner_region.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
