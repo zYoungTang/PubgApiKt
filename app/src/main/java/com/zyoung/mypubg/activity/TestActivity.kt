@@ -37,7 +37,7 @@ class TestActivity : AppCompatActivity(), View.OnClickListener {
         mGson = Gson()
         Thread(Runnable {
             //            Player()
-            val match = pubg.getMatch(Region.PC_AS, "d4d70a4f-a4f2-40cd-886e-e9440486d0b6")
+            val match = pubg.getMatch(Region.PC_AS, "d4d70a4f-a4f2-40cd-886e-e9440486d0b6",player!!)
             match.matchInfo.data.relationships.assets
 //            seasons()
 
@@ -94,7 +94,7 @@ class TestActivity : AppCompatActivity(), View.OnClickListener {
             val list: ArrayList<MatchInfo> = ArrayList()
             //                    matches.forEach { match ->
             var m = matches[0]
-            val match = pubg.getMatch(player!!.shareId, m.id)
+            val match = pubg.getMatch(player!!.shareId, m.id,player!!)
             var matchInfo = match.matchInfo
             Logger.json(mGson.toJson(matchInfo))
             var i: Int = 0

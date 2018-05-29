@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var mGson: Gson
     lateinit var mPubg: Pubg
-    lateinit var mRegion: String
     lateinit var mContext: Context
-    lateinit var mPlayerName: String
     lateinit var mPlayer: Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +41,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initView() {
         setContentView(R.layout.activity_main)
-        var fragments: List<Fragment> = listOf<Fragment>(MineFragment(), MatchesFragment(), SeasonsStatusFragment(), VersionFragment())
-        var fragmentAdapter = MyFragmentAdapter(supportFragmentManager, fragments)
+        val fragments: List<Fragment> = listOf<Fragment>(MineFragment(), MatchesFragment(), SeasonsStatusFragment(), VersionFragment())
+        val fragmentAdapter = MyFragmentAdapter(supportFragmentManager, fragments)
         vp_main.adapter = fragmentAdapter
         vp_main.offscreenPageLimit = 4
         mContext = this
@@ -59,12 +57,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.tv_mine -> {
                 vp_main.setCurrentItem(0, false)
-//                Thread(Runnable {
-//                    val matches = mPubg.getMatch(mPlayer.shareId, mPlayer.matches)
-//                    for (match in matches) {
-//                        L.d(match!!.data.attributes.createdAt)
-//                    }
-//                }).start()
             }
             R.id.tv_matches -> {
                 vp_main.setCurrentItem(1, false)
@@ -82,15 +74,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return mPlayer
     }
 
-    class MyFragmentAdapter : FragmentPagerAdapter {
-        var list: List<Fragment>? = null
-
-        constructor(fragmentManager: FragmentManager, list: List<Fragment>) : super(fragmentManager) {
-            this.list = list
-        }
+    class MyFragmentAdapter(fragmentManager: FragmentManager, list: List<Fragment>) : FragmentPagerAdapter(fragmentManager) {
+        var list: List<Fragment>? = list
 
         override fun getItem(position: Int): Fragment {
-            return list!!.get(position)
+            return list!![position]
         }
 
         override fun getCount(): Int {

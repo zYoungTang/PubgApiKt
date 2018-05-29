@@ -62,15 +62,15 @@ class Pubg {
         } else null
     }
 
-    fun getMatch(region: String, id: String): Match {
+    fun getMatch(region: String, id: String,player:Player): Match {
         val retrofit: Retrofit = getRetrofit()
         val api: MatchesApi = retrofit.create<MatchesApi>(MatchesApi::class.java)
         val call = api.getMatchInfo(region, id, APP_KEY)
         val response = call.execute()
         if (response.isSuccessful) {
-            return Match(response!!.body()!!)
+            return Match(response!!.body()!!,player)
         }
-        return Match(MatchInfo())
+        return Match(MatchInfo(),player)
     }
 
     fun getMatch(region: String, matches: List<PlayerInfo.DataBeanX.RelationshipsBean.MatchesBean.DataBean>): List<MatchInfo?> {

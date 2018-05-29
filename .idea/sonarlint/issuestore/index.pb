@@ -138,3 +138,9 @@ V
 &app/src/main/res/layout/item_match.xml,a/6/a68ce34924e0b36f5a9a844ced9a8d3a9f5e8d88
 i
 9app/src/main/java/com/zyoung/mypubg/match/MatchAdapter.kt,5/a/5a201e9f7c759da925456e897bc2f12f4e9506d7
+_
+/app/src/main/res/layout/item_match_activity.xml,1/d/1d214f620d4c5d5663393bd84bff8f5cf9ed837e
+_
+/app/src/main/res/layout/activity_match_info.xml,9/3/936c06dfdbea3367386f1a7a538e2783c270e3f4
+q
+Aapp/src/main/java/com/zyoung/mypubg/activity/MatchInfoActivity.kt,2/b/2b067f20c010a4131c21141c3e953d401282a682
