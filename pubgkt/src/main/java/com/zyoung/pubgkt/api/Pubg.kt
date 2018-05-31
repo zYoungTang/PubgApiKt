@@ -6,7 +6,9 @@ import com.zyoung.pubgkt.api.api.SeasonsApi
 import com.zyoung.pubgkt.api.api.StatusApi
 import com.zyoung.pubgkt.api.bean.MatchInfo
 import com.zyoung.pubgkt.api.bean.PlayerInfo
+import com.zyoung.pubgkt.api.bean.PlayerSeasonBetaInfo
 import com.zyoung.pubgkt.api.bean.PlayerSeasonInfo
+import com.zyoung.pubgkt.api.tools.L
 import com.zyoung.pubgkt.api.wrapper.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -51,6 +53,17 @@ class Pubg {
         } else null
     }
 
+    fun playerBetaSeason(region: String, player_id: String, season_id: String): PlayerBetaSeason? {
+        val retrofit: Retrofit = getRetrofit()
+        val api: PlayerInfoApi = retrofit.create<PlayerInfoApi>(PlayerInfoApi::class.java)
+        val call = api.getPlayerSeasonBetaInfo(region, player_id, season_id, APP_KEY)
+        val response = call.execute()
+        return if (response.isSuccessful) {
+            val bean: PlayerSeasonBetaInfo = response.body()!!
+            PlayerBetaSeason(bean)
+        } else null
+    }
+
     fun playerSeason(region: String, player_id: String, season_id: String): PlayerSeason? {
         val retrofit: Retrofit = getRetrofit()
         val api: PlayerInfoApi = retrofit.create<PlayerInfoApi>(PlayerInfoApi::class.java)
@@ -62,15 +75,16 @@ class Pubg {
         } else null
     }
 
-    fun getMatch(region: String, id: String,player:Player): Match {
+
+    fun getMatch(region: String, id: String, player: Player): Match {
         val retrofit: Retrofit = getRetrofit()
         val api: MatchesApi = retrofit.create<MatchesApi>(MatchesApi::class.java)
         val call = api.getMatchInfo(region, id, APP_KEY)
         val response = call.execute()
         if (response.isSuccessful) {
-            return Match(response!!.body()!!,player)
+            return Match(response!!.body()!!, player)
         }
-        return Match(MatchInfo(),player)
+        return Match(MatchInfo(), player)
     }
 
     fun getMatch(region: String, matches: List<PlayerInfo.DataBeanX.RelationshipsBean.MatchesBean.DataBean>): List<MatchInfo?> {

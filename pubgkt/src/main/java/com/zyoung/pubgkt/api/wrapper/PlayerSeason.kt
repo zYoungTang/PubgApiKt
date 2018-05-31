@@ -1,6 +1,5 @@
 package com.zyoung.pubgkt.api.wrapper
 
-import com.zyoung.pubgkt.api.bean.PlayerInfo
 import com.zyoung.pubgkt.api.bean.PlayerSeasonInfo
 
 /**
@@ -12,12 +11,12 @@ import com.zyoung.pubgkt.api.bean.PlayerSeasonInfo
  */
 class PlayerSeason {
     var bean: PlayerSeasonInfo
-    var duo: PlayerSeasonInfo.DataBeanXX.AttributesBean.GameModeStatsBean.DuoBean
-    var duofpp: PlayerSeasonInfo.DataBeanXX.AttributesBean.GameModeStatsBean.DuofppBean
-    var solo: PlayerSeasonInfo.DataBeanXX.AttributesBean.GameModeStatsBean.SoloBean
-    var solofpp: PlayerSeasonInfo.DataBeanXX.AttributesBean.GameModeStatsBean.SolofppBean
-    var squad: PlayerSeasonInfo.DataBeanXX.AttributesBean.GameModeStatsBean.SquadBean
-    var squadfpp: PlayerSeasonInfo.DataBeanXX.AttributesBean.GameModeStatsBean.SquadfppBean
+    var duo: PlayerSeasonInfo.DataBeanXXXXX.AttributesBean.GameModeStatsBean.DuoBean
+    var duofpp: PlayerSeasonInfo.DataBeanXXXXX.AttributesBean.GameModeStatsBean.DuofppBean
+    var solo: PlayerSeasonInfo.DataBeanXXXXX.AttributesBean.GameModeStatsBean.SoloBean
+    var solofpp: PlayerSeasonInfo.DataBeanXXXXX.AttributesBean.GameModeStatsBean.SolofppBean
+    var squad: PlayerSeasonInfo.DataBeanXXXXX.AttributesBean.GameModeStatsBean.SquadBean
+    var squadfpp: PlayerSeasonInfo.DataBeanXXXXX.AttributesBean.GameModeStatsBean.SquadfppBean
 
     constructor(playerInfo: PlayerSeasonInfo) {
         bean = playerInfo
@@ -28,6 +27,4 @@ class PlayerSeason {
         squad = bean.data.attributes.gameModeStats.squad
         squadfpp = bean.data.attributes.gameModeStats.squadfpp
     }
-
-
 }

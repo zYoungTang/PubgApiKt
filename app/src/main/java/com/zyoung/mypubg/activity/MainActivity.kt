@@ -74,6 +74,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return mPlayer
     }
 
+    fun getResgion():String{
+        return mPlayer.shareId
+    }
+
     class MyFragmentAdapter(fragmentManager: FragmentManager, list: List<Fragment>) : FragmentPagerAdapter(fragmentManager) {
         var list: List<Fragment>? = list
 

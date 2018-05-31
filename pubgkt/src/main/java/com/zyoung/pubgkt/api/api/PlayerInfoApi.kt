@@ -1,6 +1,7 @@
 package com.zyoung.pubgkt.api
 
 import com.zyoung.pubgkt.api.bean.PlayerInfo
+import com.zyoung.pubgkt.api.bean.PlayerSeasonBetaInfo
 import com.zyoung.pubgkt.api.bean.PlayerSeasonInfo
 import retrofit2.Call
 import retrofit2.http.*
@@ -31,4 +32,13 @@ interface PlayerInfoApi {
             @Path("seasonID") seasonId: String,
             @Header("Authorization") key: String
     ): Call<PlayerSeasonInfo>
+
+    @Headers("Accept: application/vnd.api+json")
+    @GET("shards/{region}/players/{playerID}/seasons/{seasonID}")
+    fun getPlayerSeasonBetaInfo(
+            @Path("region") region: String,
+            @Path("playerID") playerId: String,
+            @Path("seasonID") seasonId: String,
+            @Header("Authorization") key: String
+    ): Call<PlayerSeasonBetaInfo>
 }
